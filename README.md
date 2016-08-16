@@ -1,0 +1,2 @@
+# EZTranslation
+Intellij plugin
