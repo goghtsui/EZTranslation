@@ -1,0 +1,46 @@
+<idea-plugin version="2">
+  <!-- develop on 2016/08/15 -->
+  <id>com.gogh.android.plugin.translation</id>
+  <name>Easy-Translation</name>
+  <version>1.04.06</version>
+  <vendor email="xiaofeng355@gmail.com" url="http://xiaofeng.site">Gogh's blog</vendor>
+
+  <description><![CDATA[
+      A plugin that used to translate English words to Chinese. <br>
+      <p> Instructions: </p>
+      <li>1. Double click to select the English word you want to translate. </li>
+      <li>2. Press shortcut key(Alt + A) to view translation result. </li>
+      <br>
+      <p> Note: </p>
+      <li>If you encounter garbled, try to change your IDE font. </li>
+      <li>The balloon only display 5 seconds. </li>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      <li> 1.04.06 : Develop the plugin, and first release. </li><br>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="141.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="Translation" class="com.gogh.action.TranslationAction" text="EasyTranslation"
+            description="Translate english to chinese.">
+      <add-to-group group-id="EditMenu" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="alt A"/>
+    </action>
+  </actions>
+
+</idea-plugin>
