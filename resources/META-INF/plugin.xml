@@ -1,48 +1,84 @@
 <idea-plugin version="2">
-  <!-- develop on 2016/08/15 -->
-  <id>com.gogh.android.plugin.easytranslation</id>
+  <id>com.gogh.plugin.easytranslation</id>
   <name>Easy-Translation</name>
-  <version>1.04.07</version>
-  <vendor email="xiaofeng355@gmail.com" url="http://xiaofeng.site">Gogh's blog</vendor>
+  <version>1.05.01</version>
+  <vendor email="xiaofeng355@gmial.com" url="http://www.xiaofeng.site">Gogh's Blog</vendor>
 
   <description><![CDATA[
       An Intellij/Android Studio plugin that support Chinese English words or sentence translation of each other,
       this function is simple, but very useful, if you have any questions or suggestions in the course, you can always feedback. <br>
       <br>
-      <p> Instructions: </p>
+      <p> Instructions(important update): </p>
       <li>1. Double click to select the English word you want to translate. </li>
       <li>2. Press shortcut key(Alt + A) to view translation result. </li>
+      <li>3. To Step 2. you also can right click the word and select menu item "Translate". </li>
+      <li>4. Another way is to press shortcut(Alt + S) display translation content in tool window(Floation Mode or Pinned Mode). </li>
+      <li>5. Press shortcut key(Shift + F10) to select an translation engine(Google or YouDao) to translate it in web page. </li>
       <br>
-      <p> Note: </p>
-      <li>If you encounter garbled, try to change your IDE font. </li>
-      <li>The balloon only display 5 seconds. </li>
+      <p> Fixed: </p>
+      <li>1. Solve the garbage problem. </li>
+      <li>2. The balloon support for mouse events. </li>
     ]]></description>
 
   <change-notes><![CDATA[
       <li> 1.04.06 : Develop the plugin, and first publish. </li><br>
       <li> 1.04.07 : Modify compatibility. </li><br>
+      <li> 1.04.08 : 1. Bug fixed.
+                     2. Modify popup window, support for mouse events.
+                     3. Add tool window.
+                     4. Add web page options.
+                     5. Support apply YouDao API for Settings. </li><br>
     ]]>
   </change-notes>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="141.0"/>
+  <!--<idea-version since-build="141.0"/>-->
+  <idea-version since-build="141.0" until-build="162.*"/>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
-  <!-- uncomment to enable plugin in all products -->
   <depends>com.intellij.modules.lang</depends>
 
-  <!--<extensions defaultExtensionNs="com.intellij">
-    &lt;!&ndash; Add your extensions here &ndash;&gt;
-  </extensions>-->
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+    <applicationConfigurable instance="com.gogh.plugin.config.Settings"/>
+    <!-- Add your extensions here -->
+    <projectService serviceInterface="com.gogh.plugin.adapter.TranslationManager"
+                    serviceImplementation="com.gogh.plugin.adapter.TranslationManager"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="com.gogh.plugin">
+    <translator implementation="com.gogh.com.gogh.plugin.translator.YoudaoTranslator"/>
+    <translator implementation="com.gogh.com.gogh.plugin.translator.GoogleTranslator"/>
+  </extensions>
 
   <actions>
     <!-- Add your actions here -->
-    <action id="Translation" class="com.gogh.action.TranslationAction" text="EasyTranslation"
-            description="Translate english to chinese.">
-      <add-to-group group-id="EditMenu" anchor="first"/>
+    <action id="EditorPopupMenuAction" class="com.gogh.plugin.action.BalloonAction"
+            text="Translate"
+            description="Chinese English translation of each other.">
+      <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="$Cut"/>
       <keyboard-shortcut keymap="$default" first-keystroke="alt A"/>
     </action>
+    <!--<action id="TranslationAction" class="com.gogh.com.gogh.plugin.action.QueryOnlineAction"
+            text="TranslationDialog"
+            description="Chinese English translation of each other.">
+        <add-to-group group-id="MainToolBar" anchor="after" relative-to-action="HelpTopics"/>
+        <keyboard-shortcut keymap="$default" first-keystroke="alt S"/>
+    </action>-->
+    <!--<action id="SelectPlatform" class="com.gogh.com.gogh.plugin.action.SelectPlatform" text="SelectPlatform"
+            description="select a platform to translate online.">
+        <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        <keyboard-shortcut keymap="$default" first-keystroke="alt G"/>
+    </action>-->
+    <action id="QuickTranslate" class="com.gogh.plugin.action.ToolWindowAction" text="ToolWindow"
+            description="ToolWindowAction">
+      <add-to-group group-id="ViewMenu" relative-to-action="CodeEditorBaseGroup" anchor="after"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="alt S"/>
+    </action>
+    <action id="ExternalTranslation" class="com.gogh.plugin.action.ExternalTranslationAction"
+            text="External _Translation">
+      <keyboard-shortcut keymap="$default" first-keystroke="shift F10"/>
+    </action>
   </actions>
-
 </idea-plugin>
