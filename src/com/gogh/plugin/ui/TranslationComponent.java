@@ -348,7 +348,7 @@ public class TranslationComponent extends JPanel implements Disposable, DataProv
         private MyShowSettingsButton(AnAction action, Presentation presentation, String place
                 , @NotNull Dimension minimumSize) {
             super(action, presentation, place, minimumSize);
-            myPresentation.setIcon(AllIcons.General.SecondaryGroup);
+            myPresentation.setIcon(AllIcons.General.Settings);
         }
 
         private void hideSettings() {
@@ -420,7 +420,7 @@ public class TranslationComponent extends JPanel implements Disposable, DataProv
     private class ExternalTranslationAction extends AnAction implements HintManagerImpl.ActionToIgnore {
 
         private ExternalTranslationAction() {
-            super("View External Dictionary", null, AllIcons.Actions.Browser_externalJavaDoc);
+            super("View External Dictionary", null, AllIcons.Actions.Find);
             registerCustomShortcutSet(ActionManager.getInstance()
                     .getAction(IString.ACTION_EXTERNAL_TRANSLATION).getShortcutSet(), null);
         }

@@ -17,6 +17,7 @@ package com.gogh.plugin.config;
 
 import com.gogh.plugin.common.IString;
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.browsers.BrowserLauncher;
 import com.intellij.ide.browsers.WebBrowser;
 import com.intellij.ide.browsers.WebBrowserManager;
@@ -81,8 +82,9 @@ public class Settings implements Configurable, ItemListener {
     private static void obtainApiKey() {
         WebBrowser browser = WebBrowserManager.getInstance().getFirstActiveBrowser();
         if (browser != null) {
-            BrowserLauncher.getInstance().browseUsingPath(IString.URL, null, browser, null
-                    , ArrayUtil.EMPTY_STRING_ARRAY);
+            /*BrowserLauncher.getInstance().browseUsingPath(IString.URL, null, browser, null
+                    , ArrayUtil.EMPTY_STRING_ARRAY);*/
+            BrowserUtil.browse(IString.URL);
         }
     }
 

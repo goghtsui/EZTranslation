@@ -65,7 +65,7 @@ public class YoudaoTranslator extends TranslatorEx {
     @NotNull
     @Override
     public String getMenuItem() {
-        return "YouDao translation web platform.";
+        return "YouDao web platform.";
     }
 
     @NotNull

@@ -31,12 +31,12 @@ import com.intellij.openapi.util.IconLoader;
  * <p> ChangeLog: </p>
  * <li> 高晓峰 on 8/15/2016 do create. </li>
  */
-public class BalloonAction extends AnAction {
+public class EZTranslate extends AnAction {
 
     /**
      * constructor
      */
-    public BalloonAction() {
+    public EZTranslate() {
         super(IString.BALLOON_ACTION_NAME, IString.TRANSLATE_NAME, IconLoader.getIcon(ICON.ICON_16));
     }
 

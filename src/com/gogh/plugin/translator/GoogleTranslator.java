@@ -30,7 +30,7 @@ public class GoogleTranslator implements Translator {
 	@NotNull
 	@Override
 	public String getMenuItem() {
-		return "Google translation web platform.";
+		return "Google web platform.";
 	}
 
 	@NotNull

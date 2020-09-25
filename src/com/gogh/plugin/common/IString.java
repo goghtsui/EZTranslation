@@ -66,7 +66,7 @@ public class IString {
     public static final String QUERY_ONLINE_ACTION_NAME = "QueryOnlineAction";
 
     // BalloonAction
-    public static final String BALLOON_ACTION_NAME = "BalloonAction";
+    public static final String BALLOON_ACTION_NAME = "EZTranslate";
     public static final String TRANSLATE_NAME = "Translate";
 
     public static final String PANEL_BACKGROUND = "Panel.background";
